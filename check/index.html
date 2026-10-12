@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Scam Checker | KinAlert</title>
+<meta name="description" content="Paste a dodgy text, email or WhatsApp message and find out in seconds if it's a scam. Free, UK-focused, no sign-up.">
+<meta name="theme-color" content="#f5efe3">
+<link rel="canonical" href="https://kinalert.co.uk/check/">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KinAlert">
+<meta property="og:url" content="https://kinalert.co.uk/">
+<meta property="og:title" content="KinAlert: know the moment Mum gets a scam">
+<meta property="og:description" content="One WhatsApp number checks dodgy messages for your parents and alerts you straight away. Join the waitlist.">
+<meta property="og:image" content="https://kinalert.co.uk/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KinAlert logo: Know the moment Mum gets a scam.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinalert.co.uk/assets/og.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://kinalert.co.uk/#org","name":"KinAlert","alternateName":"Kin Alert","url":"https://kinalert.co.uk/","logo":"https://kinalert.co.uk/assets/apple-touch-icon.png","sameAs":["https://www.facebook.com/profile.php?id=61595379268950"]},
+ {"@type":"WebSite","@id":"https://kinalert.co.uk/#site","name":"KinAlert","alternateName":"Kin Alert","url":"https://kinalert.co.uk/","publisher":{"@id":"https://kinalert.co.uk/#org"}}
+]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5efe3; --paper-2:#efe7d7; --card:#fffcf6; --ink:#1b2620; --ink-2:#47524c; --line:#e2d8c4;
+    --green:#1d5a43; --green-deep:#123d2d; --green-tint:#e3ece5; --red:#a8261d; --red-tint:#fbe9e6; --gold:#d9a441;
+    --chat:#efe6da; --bubble-out:#d9f5c4; --radius:18px;
+    --shadow-lg:0 2px 4px rgba(27,38,32,.06), 0 24px 48px -16px rgba(27,38,32,.28);
+    --shadow-sm:0 1px 2px rgba(27,38,32,.06), 0 8px 20px -10px rgba(27,38,32,.18);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scrollbar-color:#c9bfa9 var(--paper)}
+  body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 Inter,system-ui,-apple-system,sans-serif;
+       -webkit-font-smoothing:antialiased;caret-color:var(--green);
+       background-image:radial-gradient(1200px 600px at 85% -10%, #fbf6ea 0%, transparent 60%)}
+  ::selection{background:var(--green);color:#fff}
+  a{color:var(--green);text-underline-offset:3px}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;padding-top:22px;padding-bottom:22px}
+  .brand{display:flex;align-items:center;gap:10px;font:560 21px Fraunces,Georgia,serif;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .brand svg{flex:none}
+  .top-link{font:500 15px Inter,sans-serif;color:var(--ink);text-decoration:none;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);transition:border-color .2s,background .2s}
+  .top-link:hover{border-color:var(--green);background:#fff}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding-top:40px;padding-bottom:96px}
+  h1{font:400 clamp(40px,6vw,72px)/1.04 Fraunces,Georgia,serif;letter-spacing:-.022em;margin:0 0 24px;text-wrap:balance;font-variation-settings:"opsz" 144}
+  h1 em{font-style:italic;color:var(--green)}
+  .lead{font-size:19px;color:var(--ink-2);max-width:31em;margin:0 0 32px;text-wrap:pretty}
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;border:0;border-radius:14px;
+       padding:16px 26px;font:600 17px Inter,sans-serif;text-decoration:none;cursor:pointer;min-height:52px;
+       box-shadow:0 1px 0 rgba(255,255,255,.15) inset, 0 10px 24px -12px rgba(18,61,45,.7);
+       transition:background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease)}
+  .btn:hover{background:var(--green-deep);transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn[disabled]{opacity:.65;cursor:progress;transform:none}
+  .btn svg{transition:transform .2s var(--ease)}
+  .btn:hover svg{transform:translateX(3px)}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--ink-2)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(217,164,65,.2)}
+
+  /* demo */
+  .demo{position:relative;justify-self:end;width:100%;max-width:400px}
+  .phone{background:var(--chat);border-radius:34px;border:10px solid #18211c;box-shadow:var(--shadow-lg);overflow:hidden}
+  .chat-head{display:flex;align-items:center;gap:10px;background:#fbf7ef;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .avatar{width:34px;height:34px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none}
+  .chat-name{font:600 14.5px Inter,sans-serif;line-height:1.2}
+  .chat-sub{font-size:12.5px;color:var(--ink-2)}
+  .chat-body{padding:16px 12px 96px;display:flex;flex-direction:column;gap:10px;min-height:300px}
+  .day{align-self:center;font-size:11.5px;color:var(--ink-2);background:#fbf7ef;padding:3px 10px;border-radius:8px}
+  .b{max-width:86%;padding:9px 12px 20px;border-radius:12px;font-size:14.5px;line-height:1.45;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.07)}
+  .b time{position:absolute;right:10px;bottom:4px;font-size:11px;color:#56615b}
+  .out time{color:#3f5a37}
+  .out{background:var(--bubble-out);align-self:flex-end;border-top-right-radius:4px}
+  .in{background:#fff;align-self:flex-start;border-top-left-radius:4px}
+  .fwd{display:flex;align-items:center;gap:5px;font-size:12px;color:#3f5a37;font-style:italic;margin-bottom:3px}
+  .verdict{display:flex;align-items:center;gap:6px;color:var(--red);font-weight:600;margin-bottom:2px}
+  .notif{position:absolute;left:-48px;bottom:-34px;width:min(330px,90%);background:rgba(255,252,246,.92);
+         -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px;
+         padding:13px 15px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:auto 1fr;gap:4px 11px;font-size:14px;line-height:1.45}
+  .notif .icon{grid-row:span 2;width:38px;height:38px;border-radius:10px;background:var(--green);display:grid;place-items:center}
+  .notif-top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2)}
+  .notif-top b{color:var(--ink);font-weight:600}
+
+  /* authored moment: the conversation plays once */
+  .js .play .out,.js .play .in,.js .play .notif{opacity:0;transform:translateY(10px);filter:blur(4px);
+       transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease)}
+  .js .play.on .out{opacity:1;transform:none;filter:none;transition-delay:.25s}
+  .js .play.on .in{opacity:1;transform:none;filter:none;transition-delay:1.15s}
+  .js .play.on .notif{opacity:1;transform:none;filter:none;transition-delay:2.1s}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .js .play .out,.js .play .in,.js .play .notif{opacity:1;transform:none;filter:none;transition:none}
+  }
+
+  /* sections */
+  section{padding-top:96px;padding-bottom:96px}
+  .rule{border-top:1px solid var(--line)}
+  h2{font:400 clamp(32px,4.2vw,50px)/1.1 Fraunces,Georgia,serif;letter-spacing:-.018em;margin:0 0 20px;text-wrap:balance;font-variation-settings:"opsz" 144}
+  h2 em{font-style:italic;color:var(--green)}
+  .sub{color:var(--ink-2);max-width:34em;margin:0 0 56px;font-size:18px}
+
+  /* how it works: a timeline, not cards */
+  .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative}
+  .flow::before{content:"";position:absolute;top:27px;left:28px;right:calc(33.33% - 20px);height:1px;
+                background:repeating-linear-gradient(90deg,var(--green) 0 6px,transparent 6px 12px);opacity:.5}
+  .flow li{position:relative}
+  .flow .ic{width:56px;height:56px;border-radius:16px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;
+            margin-bottom:22px;box-shadow:var(--shadow-sm);position:relative}
+  .flow h3{font:560 22px/1.25 Fraunces,Georgia,serif;letter-spacing:-.01em;margin:0 0 8px}
+  .flow p{margin:0;color:var(--ink-2);max-width:26em}
+
+  /* promises */
+  .promises{background:var(--green-deep);color:#f3efe4;border-radius:28px;padding:72px 64px;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .promises h2{color:#fff}
+  .promises h2 em{color:#e8c77f}
+  .promises .sub{color:#d6e4da;margin-bottom:0}
+  .plist{list-style:none;margin:0;padding:0;display:grid;gap:0}
+  .plist li{display:grid;grid-template-columns:28px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .plist li:first-child{border-top:0;padding-top:4px}
+  .plist strong{display:block;font:560 19px/1.3 Fraunces,Georgia,serif;color:#fff;margin-bottom:4px}
+  .plist span{color:#d6e4da}
+
+  /* join */
+  .join{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .offer{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+  .offer li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-2)}
+  .offer svg{flex:none;margin-top:4px}
+  form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;box-shadow:var(--shadow-sm)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:20px}
+  label{display:block;font-weight:600;font-size:15px;margin:0 0 7px}
+  input,select{width:100%;font:16px Inter,sans-serif;padding:13px 14px;border:1px solid #d3c9b5;border-radius:12px;background:#fff;color:var(--ink);
+               min-height:50px;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+  select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%231b2620' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+         background-repeat:no-repeat;background-position:right 15px center;padding-right:40px}
+  input:hover,select:hover{border-color:#b9ad95}
+  input:focus,select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(29,90,67,.15)}
+  input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 4px rgba(168,38,29,.1)}
+  ::placeholder{color:#69726d}
+  .hp{position:absolute;left:-9999px}
+  form .btn{width:100%;justify-content:center;margin-top:6px}
+  .msg{margin:14px 0 0;font-weight:500;min-height:1.6em}
+  .msg.ok{color:var(--green)} .msg.err{color:var(--red)}
+  .fine{font-size:13.5px;color:var(--ink-2);margin:10px 0 0}
+
+  footer{padding-top:40px;padding-bottom:56px;color:var(--ink-2);font-size:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;gap:56px;padding-top:16px;padding-bottom:88px}
+    .demo{justify-self:start;max-width:380px}
+    .notif{left:auto;right:-12px;bottom:-40px}
+    .flow{grid-template-columns:1fr;gap:36px}
+    .flow::before{top:28px;bottom:28px;left:27px;right:auto;width:1px;height:auto;
+                  background:repeating-linear-gradient(180deg,var(--green) 0 6px,transparent 6px 12px)}
+    .flow li{display:grid;grid-template-columns:56px 1fr;gap:20px}
+    .flow .ic{margin-bottom:0}
+    .promises{grid-template-columns:1fr;padding:48px 28px;gap:32px;border-radius:22px}
+    .join{grid-template-columns:1fr;gap:36px}
+    section{padding-top:72px;padding-bottom:72px}
+  }
+  @media (max-width:520px){
+    .wrap{padding-left:16px;padding-right:16px}
+    form{padding:24px 20px}
+    .row{grid-template-columns:1fr;gap:0}
+    .top-link{padding:8px 14px;font-size:14px}
+    .notif{right:-6px}
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+  .checker{max-width:760px}
+  textarea{width:100%;min-height:220px;font:18px/1.5 Inter,sans-serif;padding:18px;border:1px solid #d3c9b5;border-radius:16px;background:#fff;color:var(--ink);resize:vertical}
+  textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(29,90,67,.15)}
+  .count{font-size:14px;color:var(--ink-2);text-align:right;margin:6px 0 18px}
+  .result{margin-top:28px;border-radius:22px;padding:26px 28px;border:1px solid var(--line);background:var(--card);display:none}
+  .result.show{display:block}
+  .result .v{font:600 34px/1.1 Fraunces,Georgia,serif;margin-bottom:10px}
+  .result.SCAM{border-color:#e9b4ae;background:#fdf1ef}.result.SCAM .v{color:var(--red)}
+  .result.SAFE{border-color:#bcd5c4;background:#eef6f0}.result.SAFE .v{color:var(--green)}
+  .result.UNSURE{border-color:#ead8a8;background:#fbf5e6}.result.UNSURE .v{color:#8a6410}
+  .result p{margin:6px 0;font-size:18px}
+  .after{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:17px}
+  .privacy{font-size:14px;color:var(--ink-2);margin-top:14px}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="/" aria-label="KinAlert home">
+    <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="#1d5a43"/><path d="M15 7.5l6.5 2.6v5c0 4-2.8 6.9-6.5 8-3.7-1.1-6.5-4-6.5-8v-5L15 7.5z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 15.2l2.2 2.2 4-4.2" fill="none" stroke="#e8c77f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    KinAlert
+  </a>
+  <a class="top-link" href="/#join">Join the waitlist</a>
+</header>
+<main>
+  <section style="padding-top:40px">
+    <div class="wrap checker">
+      <h1 style="font-size:clamp(38px,6vw,64px)">Is this a <em>scam?</em></h1>
+      <p class="lead">Paste a text, email or WhatsApp message you're not sure about. You'll get an answer in seconds. Free, made for the UK, no sign-up.</p>
+      <form id="checkForm" novalidate>
+        <label for="msg">The message</label>
+        <textarea id="msg" name="msg" maxlength="2500" placeholder="e.g. Royal Mail: your parcel is on hold. Pay £1.45 to rebook: royalmail-redeliver.com"></textarea>
+        <div class="count"><span id="n">0</span>/2500</div>
+        <button class="btn" type="submit" id="go">Check this message</button>
+        <p class="privacy">We don't store what you paste. Never paste passwords, PINs or bank card numbers.</p>
+      </form>
+      <div class="result" id="result" role="status" aria-live="polite">
+        <div class="v" id="v"></div>
+        <p id="reason"></p>
+        <p id="advice"></p>
+        <div class="after">Want to know the moment <strong>your mum</strong> gets one of these? <a href="/#join">Join the KinAlert waitlist</a>.</div>
+      </div>
+      <p class="msg err" id="err"></p>
+      <p class="privacy">This is a free AI check and can be wrong. If money is involved, hang up and call your bank on <strong>159</strong>. Forward scam texts to <strong>7726</strong>.</p>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><span>KinAlert is in development.</span><span><a href="/">Home</a> · © 2026 KinAlert</span></footer>
+<script>
+(function () {
+  var API = 'https://kinalert-checker.checker-worker.workers.dev/check';
+  var form = document.getElementById('checkForm'), msg = document.getElementById('msg'), go = document.getElementById('go');
+  var box = document.getElementById('result'), err = document.getElementById('err');
+  var LABEL = { SCAM: 'Looks like a scam', SAFE: 'Looks genuine', UNSURE: 'Not sure, be careful' };
+  msg.addEventListener('input', function () { document.getElementById('n').textContent = msg.value.length; });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.textContent = ''; box.className = 'result';
+    var text = msg.value.trim();
+    if (text.length < 5) { err.textContent = 'Please paste the message you want to check.'; msg.focus(); return; }
+    go.disabled = true; go.textContent = 'Checking...';
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: text }) })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j.success) { err.textContent = j.error || 'Something went wrong. Please try again.'; return; }
+        var d = j.data;
+        document.getElementById('v').textContent = LABEL[d.verdict] || 'Not sure, be careful';
+        document.getElementById('reason').textContent = d.reason;
+        document.getElementById('advice').textContent = d.advice ? 'What to do: ' + d.advice : '';
+        box.className = 'result show ' + d.verdict;
+      })
+      .catch(function (e2) { console.error('check failed', e2); err.textContent = 'No connection. Please try again.'; })
+      .finally(function () { go.disabled = false; go.textContent = 'Check this message'; });
+  });
+})();
+</script>
+</body>
+</html>
