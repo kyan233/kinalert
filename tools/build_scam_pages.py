@@ -171,7 +171,7 @@ def main() -> None:
     OUT.mkdir(exist_ok=True)
     (OUT / "index.html").write_text(hub(), encoding="utf-8")
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-               f"  <url><loc>{SITE}/</loc><lastmod>2026-10-12</lastmod></url>", f"  <url><loc>{SITE}/scams/</loc><lastmod>2026-10-12</lastmod></url>"]
+               f"  <url><loc>{SITE}/</loc><lastmod>2026-10-12</lastmod></url>", f"  <url><loc>{SITE}/scams/</loc><lastmod>2026-10-12</lastmod></url>", f"  <url><loc>{SITE}/business/</loc><lastmod>2026-10-13</lastmod></url>"]
     sitemap += [f"  <url><loc>{SITE}/scams/{p['slug']}/</loc><lastmod>2026-10-12</lastmod></url>" for p in PAGES]
     sitemap.append("</urlset>")
     (OUT.parent / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")

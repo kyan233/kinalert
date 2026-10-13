@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free invoice and email scam checker for UK businesses | KinAlert</title>
+<meta name="description" content="Got an invoice with new bank details or an urgent payment request from 'the boss'? Paste it in or add a screenshot and check it for scams free.">
+<link rel="canonical" href="https://kinalert.co.uk/business/">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<meta property="og:title" content="Free invoice and email scam checker for UK businesses"><meta property="og:image" content="https://kinalert.co.uk/assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/pages.css">
+<style>
+  .stat{font-size:20px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:0 0 26px}
+  .stat b{font-size:28px}
+  form.biz{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px}
+  form.biz .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form.biz label{display:block;font-weight:600;font-size:16px;margin:0 0 6px}
+  form.biz input,form.biz select{width:100%;font:400 18px var(--font);padding:12px 14px;border:1.5px solid var(--line-2);border-radius:12px;background:#fff;color:var(--ink);min-height:50px;margin-bottom:14px}
+  form.biz input:focus,form.biz select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px rgba(14,107,79,.15)}
+  form.biz button{background:var(--brand);color:#fff;border:0;border-radius:12px;padding:14px 24px;font:800 18px var(--font);cursor:pointer;min-height:52px}
+  .bm{font-weight:600;margin:10px 0 0;min-height:1.4em}.bm.ok{color:var(--brand)}.bm.err{color:var(--scam)}
+  .hp{position:absolute;left:-9999px}
+  @media (max-width:560px){form.biz .two{grid-template-columns:1fr;gap:0}}
+</style>
+</head><body>
+<header class="wrap top"><a class="brand" href="/"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="9" fill="#0e6b4f"/><path d="M15 6.8l7 2.8v5.4c0 4.3-3 7.4-7 8.6-4-1.2-7-4.3-7-8.6V9.6l7-2.8z" fill="#fff"/><path d="M11.6 15.2l2.4 2.4 4.4-4.6" fill="none" stroke="#0e6b4f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> KinAlert</a><a href="/">For families</a></header>
+<main class="wrap">
+<p class="crumbs"><a href="/">KinAlert</a> / Business</p>
+<h1>New bank details on an invoice? Check before you pay.</h1>
+<p class="lead">Fake invoices and “urgent payment” emails from someone pretending to be your boss or supplier are one of the costliest scams for UK businesses. Paste the email or invoice text below, or add a screenshot, and get a plain answer in seconds. Free.</p>
+<p class="stat"><b>£138m</b> lost by UK individuals and businesses to business email compromise in 12 months, about <b>£30,000</b> per case, according to the National Economic Crime Centre.</p>
+<div data-kinalert-checker data-cta-text="Want this for your whole team?" data-cta-link="Register interest" data-cta-href="#biz" data-example="From: accounts@acme-supplies-ltd.co (Acme Supplies) — Hi, please note our bank details have changed. Pay invoice INV-2231 for £8,450 to the new account today: sort code 20-45-77, account 41239870. Please keep this confidential as we are mid-audit."></div>
+<h2>Red flags in business payment scams</h2>
+<ul class="flags">
+  <li>A supplier says their bank details have changed, by email only</li>
+  <li>The sender's email address is slightly different from usual (a missing letter, .co instead of .co.uk)</li>
+  <li>Urgency or secrecy: “pay today”, “keep this between us”</li>
+  <li>“The boss” asks for a quick transfer or gift cards while they're unreachable</li>
+  <li>An invoice you weren't expecting, or a new payee name</li>
+</ul>
+<h2>What to do before you pay</h2>
+<ol class="todo">
+  <li>Call the supplier or colleague on a number you already have, not one in the email, to confirm any change of bank details.</li>
+  <li>Use Confirmation of Payee when you add a new payee, and pause if the name doesn't match.</li>
+  <li>Make it a rule that new or changed bank details need a second person to approve.</li>
+  <li>If you've already paid, call your bank straight away, then report it to Report Fraud at reportfraud.police.uk or on 0300 123 2040.</li>
+</ol>
+<h2>KinAlert for teams</h2>
+<p>We're building a version for small businesses: forward any suspicious invoice or email to one address and get a verdict back, with a heads-up to whoever approves payments. Tell us if you'd use it.</p>
+<form class="biz" id="biz" novalidate>
+  <div class="two"><div><label for="bn">Your name</label><input id="bn" name="name" autocomplete="name" maxlength="60" required></div>
+  <div><label for="be">Work email</label><input id="be" name="email" type="email" autocomplete="email" maxlength="120" required></div></div>
+  <div class="two"><div><label for="bc">Business name</label><input id="bc" name="company" autocomplete="organization" maxlength="80"></div>
+  <div><label for="bs">Team size</label><select id="bs" name="size" required><option value="">Choose one</option><option>Just me</option><option>2–10</option><option>11–50</option><option>51+</option></select></div></div>
+  <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <button type="submit" id="bgo">Register interest</button>
+  <p class="bm" id="bm" role="status" aria-live="polite"></p>
+</form>
+</main>
+<footer class="wrap">KinAlert's checker is an AI check and can be wrong. Always confirm payment changes by phone. © 2026 KinAlert.</footer>
+<script src="/assets/checker-widget.js" defer></script>
+<script>
+(function () {
+  var f = document.getElementById('biz'), m = document.getElementById('bm'), b = document.getElementById('bgo');
+  function show(t, ok) { m.textContent = t; m.className = 'bm ' + (ok ? 'ok' : 'err'); }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = { name: f.name.value, email: f.email.value, company: f.company.value, size: f.size.value, _honey: f._honey.value, _subject: 'KinAlert BUSINESS interest', _template: 'table', _captcha: 'false' };
+    if (!d.name.trim()) { show('Add your name.', false); f.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim())) { show('Check your email address.', false); f.email.focus(); return; }
+    if (!d.size) { show('Choose your team size.', false); f.size.focus(); return; }
+    b.disabled = true; b.textContent = 'Sending';
+    fetch('https://formsubmit.co/ajax/de3dee0c972bc49ac073096827a7b243', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(d) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) { if (res.ok && String(res.j.success) === 'true') { f.reset(); show("Thanks, we'll be in touch.", true); } else { console.error('biz form', res.j); show("That didn't send. Try again in a minute.", false); } })
+      .catch(function (err) { console.error('biz form network', err); show('No connection. Try again.', false); })
+      .finally(function () { b.disabled = false; b.textContent = 'Register interest'; });
+  });
+})();
+</script>
+</body></html>

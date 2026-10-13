@@ -44,7 +44,7 @@
           var d = j.data, v = TITLE[d.verdict] ? d.verdict : 'UNSURE';
           var steps = (d.steps || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
           out.innerHTML = '<div class="kc-v ' + v + '"><strong>' + TITLE[v] + '</strong><p>' + esc(d.reason) + '</p>' +
-            (steps ? '<ol>' + steps + '</ol>' : '') + '<p class="kc-fam">Want to know when your mum or dad gets one? <a href="/#family">Join the KinAlert waitlist</a>.</p></div>';
+            (steps ? '<ol>' + steps + '</ol>' : '') + '<p class="kc-fam">' + (root.dataset.ctaText ? esc(root.dataset.ctaText) + ' <a href="' + esc(root.dataset.ctaHref || '/') + '">' + esc(root.dataset.ctaLink || 'Find out more') + '</a>.' : 'Want to know when your mum or dad gets one? <a href="/#family">Join the KinAlert waitlist</a>.') + '</p></div>';
         })
         .catch(function (err) { console.error('check failed', err); out.innerHTML = '<p class="kc-err">No connection. Try again.</p>'; })
         .finally(function () { go.disabled = false; go.textContent = 'Check it free'; image = null; pv.textContent = ''; fileIn.value = ''; });
