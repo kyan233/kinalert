@@ -141,7 +141,7 @@ def page(p: dict) -> str:
 <h2>Other scams going round</h2><ul class="related">{related}</ul>
 </main>
 <footer class="wrap">KinAlert's checker is an AI check and can be wrong. If money is involved, call your bank on 159. © 2026 KinAlert.</footer>
-<script src="/assets/checker-widget.js" defer></script>
+<script src="/assets/checker-widget.js?v=2" defer></script>
 </body></html>
 """
 
