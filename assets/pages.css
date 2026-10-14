@@ -34,3 +34,8 @@ summary{font-weight:600;font-size:19px;cursor:pointer}
 .cta{margin:48px 0;background:var(--ink);color:#fff;border-radius:22px;padding:28px}.cta a{color:#fff;font-weight:800}
 footer{color:var(--ink-2);font-size:15px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:40px}
 @media (max-width:560px){.wrap{padding-left:16px;padding-right:16px}.kc-go{margin-left:0;width:100%}}
+.kc-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.kc-file:focus-within{outline:4px solid #f5b400;outline-offset:2px}
+/* Bigger tap targets on phones (44px minimum) */
+.top a{min-height:44px;display:inline-flex;align-items:center}
+footer a,.cta a,.kc-ex{display:inline-block;padding:10px 0}

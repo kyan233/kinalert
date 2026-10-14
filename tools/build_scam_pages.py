@@ -26,7 +26,7 @@ PAGES = [
         "from": "Text from an unknown number",
         "example": "Royal Mail: Your parcel is on hold due to an unpaid shipping fee of £1.45. Pay now to avoid return: royalmail-redeliver-uk.com",
         "flags": ["A small fee (often around £1–£3) to “release” or redeliver a parcel", "A link to a web address that isn't royalmail.com", "Pressure: pay today or the parcel goes back", "It arrived from a normal mobile number"],
-        "todo": ["Don't click the link or enter card details.", "Check any real parcel yourself at royalmail.com/track-your-item using the tracking number from the sender.", "Report it to Royal Mail at reportascam@royalmail.com, and forward the text to 7726 for free.", REPORT_FRAUD],
+        "todo": ["Don't click the link or enter card details.", "Check any real parcel yourself at royalmail.com/track-your-item using the tracking number from the sender.", "Send a screenshot of the text to reportascam@royalmail.com, and forward the text to 7726 for free.", REPORT_FRAUD],
         "faq": [("Does Royal Mail ever text about fees?", "Treat any text asking you to pay through a link with suspicion. Royal Mail says not to click the link or enter details in texts like this, and to check tracking on its own website."), ("I already paid. What now?", "Call your bank straight away using the number on the back of your card, so they can try to stop the payment and block your card.")],
     },
     {
@@ -75,7 +75,7 @@ PAGES = [
         "example": "Call from my bank: they said there is fraud on my account and I need to move my savings to a new safe account today.",
         "flags": ["You're told to move money to keep it safe", "They say it's urgent and to keep it secret, even from bank staff", "The number on your phone looks like your bank's (numbers can be faked)", "They ask for a code that's just been texted to you"],
         "todo": ["Hang up. Your bank will never ask you to move money to a safe account.", "Call 159 to reach your real bank safely, ideally from a different phone.", "Never share codes texted to you, or install apps a caller asks for.", REPORT_FRAUD],
-        "faq": [("What is 159?", "159 is a free number that connects you to your own bank's fraud team, so you know you're talking to the real bank."), ("Will I get my money back?", "Since October 2024, UK banks must reimburse most victims of this kind of push-payment fraud. Call your bank straight away.")],
+        "faq": [("What is 159?", "159 is a free number that connects you to your own bank's fraud team, so you know you're talking to the real bank."), ("Will I get my money back?", "Since October 2024, UK banks must refund most victims of this kind of push-payment fraud, up to £85,000. Call your bank straight away.")],
     },
     {
         "slug": "whatsapp-add-my-number-scam",
@@ -112,15 +112,17 @@ def page(p: dict) -> str:
     related = "".join(f'<li><a href="/scams/{o["slug"]}/">{e(o["h1"])}</a></li>' for o in PAGES if o is not p)
     flags = "".join(f"<li>{e(f)}</li>" for f in p["flags"])
     todo = "".join(f"<li>{e(t)}</li>" for t in p["todo"])
+    todo = todo.replace("reportfraud.police.uk", '<a href="https://www.reportfraud.police.uk/">reportfraud.police.uk</a>').replace("0300 123 2040", '<a href="tel:03001232040">0300 123 2040</a>').replace("159 ", '<a href="tel:159">159</a> ')
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in p["faq"])
     return f"""<!DOCTYPE html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(p['title'])} | KinAlert</title>
 <meta name="description" content="{e(p['desc'])}">
 <link rel="canonical" href="{SITE}/scams/{p['slug']}/">
-<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <meta property="og:title" content="{e(p['title'])}"><meta property="og:description" content="{e(p['desc'])}">
 <meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:url" content="{SITE}/scams/{p['slug']}/">
+<meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/pages.css">
@@ -137,10 +139,10 @@ def page(p: dict) -> str:
 <h2>Red flags</h2><ul class="flags">{flags}</ul>
 <h2>What to do</h2><ol class="todo">{todo}</ol>
 <h2>Questions</h2>{faq}
-<div class="cta"><strong style="font-size:22px">Worried about your mum or dad?</strong><p>We're building KinAlert for families: they forward anything odd to one WhatsApp number, and you get a text if it's a scam. <a href="/#family">Join the waitlist</a>.</p></div>
+<div class="cta"><strong style="font-size:22px">Worried about your mum or dad?</strong><p>We're building KinAlert for families: they forward anything odd to one WhatsApp number, and you get a text if it's a scam. <a href="/#family">Join the waitlist (coming soon)</a>.</p></div>
 <h2>Other scams going round</h2><ul class="related">{related}</ul>
 </main>
-<footer class="wrap">KinAlert's checker is an AI check and can be wrong. If money is involved, call your bank on 159. © 2026 KinAlert.</footer>
+<footer class="wrap">KinAlert's checker is an AI check and can be wrong. If money is involved, call your bank on 159. <a href="/business/">For businesses</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:hello@kinalert.co.uk">hello@kinalert.co.uk</a> · © 2026 KinAlert.</footer>
 <script src="/assets/checker-widget.js?v=2" defer></script>
 </body></html>
 """
@@ -152,14 +154,14 @@ def hub() -> str:
     return f"""<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Common UK scams and how to spot them | KinAlert</title>
 <meta name="description" content="The scam texts, calls and WhatsApps going round the UK right now, with red flags, what to do, and a free checker.">
-<link rel="canonical" href="{SITE}/scams/"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="canonical" href="{SITE}/scams/"><meta property="og:title" content="Common UK scams and how to spot them"><meta property="og:description" content="The scam texts, calls and WhatsApps going round the UK right now, with red flags and a free checker."><meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:url" content="{SITE}/scams/"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/pages.css"></head><body>
 <header class="wrap top"><a class="brand" href="/">{LOGO} KinAlert</a><a href="/#check">Check a message</a></header>
 <main class="wrap"><h1>Scams going round the UK right now</h1>
 <p class="lead">How each one works, the red flags, and what to do. Not sure about a message? <a href="/#check">Check it free</a>.</p>
 <ul class="related" style="gap:22px">{items}</ul></main>
-<footer class="wrap">© 2026 KinAlert.</footer></body></html>
+<footer class="wrap"><a href="/business/">For businesses</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:hello@kinalert.co.uk">hello@kinalert.co.uk</a> · © 2026 KinAlert.</footer></body></html>
 """
 
 
@@ -170,9 +172,10 @@ def main() -> None:
         (d / "index.html").write_text(page(p), encoding="utf-8")
     OUT.mkdir(exist_ok=True)
     (OUT / "index.html").write_text(hub(), encoding="utf-8")
+    TODAY = __import__("datetime").date.today().isoformat()
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-               f"  <url><loc>{SITE}/</loc><lastmod>2026-10-12</lastmod></url>", f"  <url><loc>{SITE}/scams/</loc><lastmod>2026-10-12</lastmod></url>", f"  <url><loc>{SITE}/business/</loc><lastmod>2026-10-13</lastmod></url>"]
-    sitemap += [f"  <url><loc>{SITE}/scams/{p['slug']}/</loc><lastmod>2026-10-12</lastmod></url>" for p in PAGES]
+               f"  <url><loc>{SITE}/</loc><lastmod>{TODAY}</lastmod></url>", f"  <url><loc>{SITE}/scams/</loc><lastmod>{TODAY}</lastmod></url>", f"  <url><loc>{SITE}/business/</loc><lastmod>{TODAY}</lastmod></url>", f"  <url><loc>{SITE}/privacy/</loc><lastmod>{TODAY}</lastmod></url>"]
+    sitemap += [f"  <url><loc>{SITE}/scams/{p['slug']}/</loc><lastmod>{TODAY}</lastmod></url>" for p in PAGES]
     sitemap.append("</urlset>")
     (OUT.parent / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
     print(f"built {len(PAGES)} pages + hub + sitemap")

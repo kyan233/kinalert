@@ -49,7 +49,7 @@
   .top{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
   .nav{display:flex;gap:22px;align-items:center;font-weight:600;font-size:17px}
-  .nav a{color:var(--ink);text-decoration:none}
+  .nav a{color:var(--ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
   .nav a:hover{text-decoration:underline}
 
   .hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;padding-top:36px;padding-bottom:80px}
@@ -89,6 +89,7 @@
   .composer{border-top:1px solid var(--line);padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:end;background:var(--surface)}
   .attach{width:52px;height:52px;border-radius:16px;border:1.5px solid var(--line-2);background:var(--surface);display:grid;place-items:center;cursor:pointer}
   .attach:hover{border-color:var(--ink)}
+  .attach:focus-within{outline:4px solid var(--focus);outline-offset:2px}
   textarea{width:100%;min-height:52px;max-height:200px;resize:none;font:400 18px/1.4 var(--font);color:var(--ink);padding:13px 16px;border:1.5px solid var(--line-2);border-radius:16px;background:var(--bg)}
   textarea:focus{outline:none;border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(14,107,79,.15)}
   textarea::placeholder{color:#5c6678}
@@ -114,6 +115,7 @@
   .notif .m{font-size:17px;line-height:1.35}
   .notif.mum{opacity:.85;transform:scale(.97)}
   .who{color:#c9d1de;font-size:15px;font-weight:600;margin:6px 4px -6px}
+  .who.soon-cap{color:#fff;font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
   form.wait{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;margin-top:28px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   label{display:block;font-weight:600;font-size:16px;margin:0 0 6px}
@@ -132,6 +134,7 @@
   .scams{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
   .scams li{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
   .scams strong{font-size:21px;display:block;margin-bottom:2px}
+  .scams strong a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
   .scams span{color:var(--ink-2)}
   .ghost{font:600 16px var(--font);color:var(--brand);background:none;border:1.5px solid var(--brand);border-radius:12px;padding:10px 16px;cursor:pointer;white-space:nowrap;min-height:44px}
   .ghost:hover{background:var(--brand-tint)}
@@ -145,7 +148,7 @@
   details p{margin:12px 0 0;color:var(--ink-2);max-width:42em}
 
   footer{background:var(--ink);color:#d9dee8;padding-top:48px;padding-bottom:56px;font-size:16px}
-  footer a{color:#fff}
+  footer a{color:#fff;display:inline-block;padding:10px 0}
   .numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:36px}
   .numbers b{display:block;font-size:30px;color:#fff;letter-spacing:.01em}
   .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;color:#aab3c3}
@@ -187,7 +190,7 @@
   <div class="wrap hero" id="check">
     <div>
       <h1>Got a message that doesn't feel right?</h1>
-      <p class="lead">Paste it here, or add a screenshot. KinAlert tells you in seconds whether it looks like a scam and what to do next. Use it yourself, or set it up for your mum, dad or grandparents.</p>
+      <p class="lead">Paste it here, or add a screenshot. KinAlert tells you in seconds whether it looks like a scam and what to do next. Use it yourself, or share it with your mum, dad or grandparents.</p>
       <ul class="facts">
         <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#e4f2ec"/><path d="M7 12.4l3.2 3.2L17 8.8" fill="none" stroke="#0e6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free, with no sign-up</li>
         <li><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#e4f2ec"/><path d="M7 12.4l3.2 3.2L17 8.8" fill="none" stroke="#0e6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Made for UK scams: HMRC, Royal Mail, banks, “Hi Mum”</li>
@@ -239,22 +242,23 @@
             <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" required maxlength="120"></div>
           </div>
           <div class="row">
-            <div class="field"><label for="who">Who would you protect?</label>
-              <select id="who" name="who" required><option value="">Choose one</option><option>Mum</option><option>Dad</option><option>Both parents</option><option>Grandparent</option><option>Someone else</option></select></div>
-            <div class="field"><label for="pay">Would you pay £4 a month?</label>
-              <select id="pay" name="pay" required><option value="">Choose one</option><option>Yes</option><option>Maybe</option><option>Only if it were free</option></select></div>
+            <div class="field"><label for="who">Who would you protect? (optional)</label>
+              <select id="who" name="who"><option value="">Choose one</option><option>Mum</option><option>Dad</option><option>Both parents</option><option>Grandparent</option><option>Someone else</option></select></div>
+            <div class="field"><label for="pay">Would you pay £4 a month? (optional)</label>
+              <select id="pay" name="pay"><option value="">Choose one</option><option>Yes</option><option>Maybe</option><option>Only if it were free</option></select></div>
           </div>
           <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn" type="submit" id="submit">Join the waitlist</button>
           <p class="msg" id="wmsg" role="status" aria-live="polite"></p>
-          <p class="fine">We'll only email you about KinAlert. Form handled by FormSubmit.</p>
+          <p class="fine">We'll only email you about KinAlert. Form handled by FormSubmit. <a href="/privacy/">Privacy notice</a>.</p>
         </form>
       </div>
       <div class="alert-demo" aria-label="Example: Mum's phone gets a scam warning and you get an alert">
+        <div class="who soon-cap">How family alerts will work (coming soon)</div>
         <div class="who">On Mum's phone</div>
-        <div class="notif mum"><span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 30 30"><path d="M15 5.5l8 3.2v6.2c0 4.9-3.4 8.5-8 9.9-4.6-1.4-8-5-8-9.9V8.7l8-3.2z" fill="#fff"/></svg></span><span class="t"><span>KinAlert</span><span>10:42</span></span><span class="m">That “Barclays” text is a scam. Don't call the number. Your bank will never ask you to move money.</span></div>
+        <div class="notif mum"><span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 30 30"><path d="M15 5.5l8 3.2v6.2c0 4.9-3.4 8.5-8 9.9-4.6-1.4-8-5-8-9.9V8.7l8-3.2z" fill="#fff"/></svg></span><span class="t"><span>KinAlert</span><span>10:42</span></span><span class="m">That “bank” text is a scam. Don't call the number. Your bank will never ask you to move money.</span></div>
         <div class="who">On your phone</div>
-        <div class="notif"><span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 30 30"><path d="M15 5.5l8 3.2v6.2c0 4.9-3.4 8.5-8 9.9-4.6-1.4-8-5-8-9.9V8.7l8-3.2z" fill="#fff"/></svg></span><span class="t"><span>KinAlert</span><span>10:42</span></span><span class="m"><strong>Mum just got a likely scam.</strong> A fake Barclays text. She's been warned. Maybe give her a ring.</span></div>
+        <div class="notif"><span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 30 30"><path d="M15 5.5l8 3.2v6.2c0 4.9-3.4 8.5-8 9.9-4.6-1.4-8-5-8-9.9V8.7l8-3.2z" fill="#fff"/></svg></span><span class="t"><span>KinAlert</span><span>10:42</span></span><span class="m"><strong>Mum just got a likely scam.</strong> A fake bank text. She's been warned. Maybe give her a ring.</span></div>
       </div>
     </div>
   </section>
@@ -264,11 +268,11 @@
       <h2 id="scams-h">Scams going round the UK right now</h2>
       <p class="sub">If you've had one of these, you're not alone. Tap “Check one like this” to see how KinAlert reads it, or <a href="/scams/">read the full guides</a>.</p>
       <ul class="scams">
-        <li><div><strong>“Add my number on WhatsApp” calls</strong><span>A bot calls and asks you to add a number. It leads to fake job offers and money requests.</span></div><button class="ghost" type="button" data-ex="Hello. Can you please add my number on WhatsApp?">Check one like this</button></li>
-        <li><div><strong>“Hi Mum, new number”</strong><span>Someone pretends to be your child on a new number and asks for money today.</span></div><button class="ghost" type="button" data-ex="Hi Mum, I dropped my phone in the toilet, this is my new number. Can you help me pay a bill today? I'll pay you back tomorrow x">Check one like this</button></li>
-        <li><div><strong>The “safe account” call</strong><span>A caller says they're your bank and tells you to move your money to keep it safe. Banks never do this.</span></div><button class="ghost" type="button" data-ex="Call from my bank: they said there is fraud on my account and I need to move my savings to a new safe account today.">Check one like this</button></li>
-        <li><div><strong>Parcel fee texts</strong><span>A text says a parcel is held until you pay a small fee through a link.</span></div><button class="ghost" type="button" data-ex="Royal Mail: Your parcel is on hold due to an unpaid shipping fee of £1.45. Pay now to avoid return: royalmail-redeliver-uk.com">Check one like this</button></li>
-        <li><div><strong>Tax refund texts</strong><span>A message says HMRC owes you money and you must claim it today.</span></div><button class="ghost" type="button" data-ex="HMRC: You are due a tax refund of £326.40. Claim before midnight: hmrc-refund-gov.co">Check one like this</button></li>
+        <li><div><strong><a href="/scams/whatsapp-add-my-number-scam/">“Add my number on WhatsApp” calls</a></strong><span>A bot calls and asks you to add a number. It leads to fake job offers and money requests.</span></div><button class="ghost" type="button" data-ex="Hello. Can you please add my number on WhatsApp?">Check one like this</button></li>
+        <li><div><strong><a href="/scams/hi-mum-scam/">“Hi Mum, new number”</a></strong><span>Someone pretends to be your child on a new number and asks for money today.</span></div><button class="ghost" type="button" data-ex="Hi Mum, I dropped my phone in the toilet, this is my new number. Can you help me pay a bill today? I'll pay you back tomorrow x">Check one like this</button></li>
+        <li><div><strong><a href="/scams/safe-account-scam/">The “safe account” call</a></strong><span>A caller says they're your bank and tells you to move your money to keep it safe. Banks never do this.</span></div><button class="ghost" type="button" data-ex="Call from my bank: they said there is fraud on my account and I need to move my savings to a new safe account today.">Check one like this</button></li>
+        <li><div><strong><a href="/scams/royal-mail-scam-text/">Parcel fee texts</a></strong><span>A text says a parcel is held until you pay a small fee through a link.</span></div><button class="ghost" type="button" data-ex="Royal Mail: Your parcel is on hold due to an unpaid shipping fee of £1.45. Pay now to avoid return: royalmail-redeliver-uk.com">Check one like this</button></li>
+        <li><div><strong><a href="/scams/hmrc-scam-text/">Tax refund texts</a></strong><span>A message says HMRC owes you money and you must claim it today.</span></div><button class="ghost" type="button" data-ex="HMRC: You are due a tax refund of £326.40. Claim before midnight: hmrc-refund-gov.co">Check one like this</button></li>
       </ul>
     </div>
   </section>
@@ -277,7 +281,7 @@
     <div class="wrap" style="max-width:820px">
       <h2 id="faq-h">Questions</h2>
       <details><summary>Is it really free?</summary><p>Yes. Checking a message is free. We're building a paid family plan that alerts you when your parent gets a scam.</p></details>
-      <details><summary>What happens to what I send?</summary><p>Your message or screenshot is sent to our AI to be checked, then the answer comes back to you. We don't save it, and we never contact you or the sender. Don't send passwords, PINs or full card numbers.</p></details>
+      <details><summary>What happens to what I send?</summary><p>Your message or screenshot is sent to Anthropic's Claude AI to be checked, then the answer comes back to you. KinAlert doesn't save it, and we never contact you or the sender. Don't send passwords, PINs or full card numbers.</p></details>
       <details><summary>Can it be wrong?</summary><p>Yes, it can. It's built to be careful: if it isn't sure, it says so rather than calling something safe. If money is involved, hang up and call your bank on 159.</p></details>
       <details><summary>What should I do if it's a scam?</summary><p>Don't reply, click links or send money. Forward scam texts to 7726 for free. If you've lost money, call your bank straight away and report it to Report Fraud on 0300 123 2040.</p></details>
       <details><summary>Who's behind KinAlert?</summary><p>KinAlert is being built in the UK by a 21-year-old founder who gets these scam calls and texts constantly, and started worrying how easily his own mum could fall for one.</p></details>
@@ -292,7 +296,7 @@
       <div><b>7726</b>Forward scam texts here for free so networks can block them.</div>
       <div><b>0300 123 2040</b>Report Fraud (formerly Action Fraud) if you've lost money.</div>
     </div>
-    <div class="legal"><span>© 2026 KinAlert. The family service is in development.</span><span><a href="/scams/">Scam guides</a> · <a href="/business/">For businesses and organisations</a> · <a href="https://www.facebook.com/profile.php?id=61595379268950" rel="noopener">Facebook</a></span></div>
+    <div class="legal"><span>© 2026 KinAlert. The family service is in development. Run by Kyan Sukhram, Woking, Surrey · <a href="mailto:hello@kinalert.co.uk">hello@kinalert.co.uk</a> · <a href="/privacy/">Privacy</a></span><span><a href="/scams/">Scam guides</a> · <a href="/business/">For businesses and organisations</a> · <a href="https://www.facebook.com/profile.php?id=61595379268950" rel="noopener">Facebook</a></span></div>
   </div>
 </footer>
 
@@ -302,7 +306,7 @@
   var thread = document.getElementById('thread'), form = document.getElementById('checkForm');
   var msg = document.getElementById('msg'), send = document.getElementById('send'), file = document.getElementById('file');
   var preview = document.getElementById('preview'), previewImg = document.getElementById('previewImg');
-  var image = null;
+  var image = null, busy = false, loadingImg = false;
   var TITLE = { SCAM: 'This looks like a scam', SAFE: 'This looks genuine', UNSURE: 'Not sure, so be careful' };
   var ICON = {
     SCAM: '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5L23 21.5H1L12 2.5z" fill="#c8102e"/><path d="M12 9v5.5M12 17.6v.1" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>',
@@ -328,16 +332,19 @@
     var f = file.files && file.files[0];
     if (!f) return;
     if (!/^image\//.test(f.type)) { addError('Choose a picture or screenshot.'); return; }
+    loadingImg = true;
     var reader = new FileReader();
+    reader.onerror = function () { loadingImg = false; addError("That picture couldn't be opened. Try a different screenshot."); };
     reader.onload = function () {
       var img = new Image();
       img.onload = function () {
+        loadingImg = false;
         var scale = Math.min(1, 1600 / Math.max(img.width, img.height));
         var c = document.createElement('canvas'); c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
-        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(img, 0, 0, c.width, c.height);
         setImage(c.toDataURL('image/jpeg', 0.85));
       };
-      img.onerror = function () { addError("That picture couldn't be opened. Try a different screenshot."); };
+      img.onerror = function () { loadingImg = false; addError("That picture couldn't be opened. Try a different screenshot."); };
       img.src = reader.result;
     };
     reader.readAsDataURL(f);
@@ -357,6 +364,8 @@
   }
 
   function check(text) {
+    if (busy) return;
+    if (loadingImg) { addError('Your screenshot is still loading. Try again in a second.'); return; }
     if (!image && text.length < 5) { addError('Paste the message, or add a screenshot with the camera button.'); msg.focus(); return; }
     var mine = el('div', 'b out');
     if (image) { var im = document.createElement('img'); im.src = image; im.alt = 'Your screenshot'; mine.appendChild(im); if (text) mine.appendChild(document.createTextNode('\n' + text)); }
@@ -365,19 +374,23 @@
     var typing = el('div', 'b in', '<span class="typing" aria-label="Checking"><i></i><i></i><i></i></span>');
     thread.appendChild(typing); scrollDown();
     var payload = { text: text }; if (image) payload.image = image;
+    var sentImage = image;
     msg.value = ''; grow(); setImage(null);
-    send.disabled = true; send.textContent = 'Checking';
+    busy = true; send.disabled = true; send.textContent = 'Checking';
+    function restore() { if (!msg.value) { msg.value = text; grow(); } if (sentImage && !image) setImage(sentImage); }
     fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-      .then(function (r) { return r.json(); })
-      .then(function (j) { typing.remove(); if (!j.success) { addError(j.error || 'Something went wrong. Try again.'); return; } showVerdict(j.data); })
-      .catch(function (e) { console.error('check failed', e); typing.remove(); addError('No connection. Check your internet and try again.'); })
-      .finally(function () { send.disabled = false; send.textContent = 'Check'; });
+      .then(function (r) { return r.json().catch(function () { return { success: false, error: 'The checker is busy. Please try again in a moment.' }; }); })
+      .then(function (j) { typing.remove(); if (!j.success) { addError(j.error || 'Something went wrong. Try again.'); restore(); return; } showVerdict(j.data); })
+      .catch(function (e) { console.error('check failed', e); typing.remove(); addError('No connection. Check your internet and try again.'); restore(); })
+      .finally(function () { busy = false; send.disabled = false; send.textContent = 'Check'; });
   }
 
   form.addEventListener('submit', function (e) { e.preventDefault(); check(msg.value.trim()); });
   document.querySelectorAll('[data-ex]').forEach(function (b) {
     b.addEventListener('click', function () {
-      document.getElementById('check').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (busy) return;
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('check').scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
       msg.value = b.getAttribute('data-ex'); grow(); check(msg.value);
     });
   });
@@ -390,9 +403,9 @@
   wf.addEventListener('submit', function (e) {
     e.preventDefault();
     var d = { name: wf.name.value, email: wf.email.value, who: wf.who.value, pay: wf.pay.value, _honey: wf._honey.value, _subject: 'KinAlert waitlist signup', _template: 'table', _captcha: 'false' };
-    var bad = !d.name.trim() ? ['name', 'Add your first name.'] : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim()) ? ['email', 'Check your email address.'] : !d.who ? ['who', 'Choose who you would protect.'] : !d.pay ? ['pay', 'Answer the £4 question.'] : null;
+    var bad = !d.name.trim() ? ['name', 'Add your first name.'] : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email.trim()) ? ['email', 'Check your email address.'] : null;
     if (bad) { wf[bad[0]].setAttribute('aria-invalid', 'true'); wf[bad[0]].focus(); show(bad[1], false); return; }
-    wbtn.disabled = true; wbtn.textContent = 'Sending';
+    wbtn.disabled = true; wbtn.textContent = 'Sending…'; show('Sending… this can take up to 30 seconds. Please keep this page open.', true);
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(d) })
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) { if (res.ok && String(res.j.success) === 'true') { wf.reset(); show("You're on the list. We'll email you when it's ready.", true); } else { console.error('Waitlist error', res.j); show("That didn't send. Try again in a minute.", false); } })
