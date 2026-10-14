@@ -89,6 +89,18 @@ PAGES = [
         "todo": ["Don't add the number or reply.", "Hang up and block the number.", "Turn on WhatsApp two-step verification so no one can take over your account.", REPORT_FRAUD],
         "faq": [("What happens if I add the number?", "Reports describe fake job and task scams, WhatsApp account takeovers and requests for money."), ("How do I stop the calls?", "Block each number. On iPhone you can also turn on Settings → Phone → Silence Unknown Callers.")],
     },
+    {
+        "slug": "ai-voice-clone-scam",
+        "title": "AI voice clone scam: a call from your child asking for money?",
+        "h1": "Got a panicked call from your child asking for money?",
+        "desc": "Scammers can copy a voice with AI from a few seconds of video. Learn how the AI voice clone scam works, how to set a family safe word, and check messages free.",
+        "lead": "Scammers can copy someone's voice with AI from just a few seconds of a video posted online. They call a parent or grandparent sounding like their child, crying and asking for money right now. Here's how to spot it, and how a family safe word stops it.",
+        "from": "Phone call or voice note that sounds like your child or grandchild",
+        "example": "Call from my son, crying. He said he crashed the car and needs me to send £2,000 to the other driver now, and not to tell his dad.",
+        "flags": ["Panic and urgency: an accident, arrest or emergency, and money needed right now", "“Don't tell Mum/Dad” or other requests for secrecy", "Payment to someone else's account, gift cards or crypto", "The voice sounds right, but the call came out of nowhere and they won't let you call back"],
+        "todo": ["Ask for your family safe word. If they can't say it, hang up.", "Call them back on the number you already have saved, not the one that called you.", "Don't send money while you're on the call, however upset they sound.", REPORT_FRAUD],
+        "faq": [("How do I pick a family safe word?", "Choose a short, random word or phrase that's easy to remember but isn't online: not a pet's name, birthday or anything on social media. Agree it face to face and don't text it."), ("How common is this?", "In a 2024 survey for Starling Bank, 28% of UK adults said they thought they'd been targeted by an AI voice cloning scam in the past year, and 46% had never heard of it."), ("Can they really copy a voice that easily?", "Yes. Starling Bank warns that a voice can be copied from as little as three seconds of audio, often taken from videos people post online.")],
+    },
 ]
 
 SOURCES = [
@@ -97,6 +109,7 @@ SOURCES = [
     "Royal Mail scam protection (reportascam@royalmail.com, royalmail.com/track-your-item)",
     "GOV.UK Dec 2025: Report Fraud replaces Action Fraud (reportfraud.police.uk, 0300 123 2040)",
     "UK Finance / PSR: mandatory APP reimbursement since Oct 2024",
+    "Starling Bank Safe Phrases, 18 Sep 2024 (Mortar Research, 3,000+ UK adults): 28% think targeted, 46% never heard of it, 3 seconds of audio",
     "Independent Jul 2026: Hi Mum losses usually up to £3,000; Santander on AI voice notes",
 ]
 
