@@ -136,8 +136,7 @@ def page(p: dict) -> str:
 <meta property="og:title" content="{e(p['title'])}"><meta property="og:description" content="{e(p['desc'])}">
 <meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:url" content="{SITE}/scams/{p['slug']}/">
 <meta property="og:type" content="article"><meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/pages.css">
 <script type="application/ld+json">{json.dumps(faq_ld)}</script>
 </head><body>
@@ -168,7 +167,7 @@ def hub() -> str:
 <title>Common UK scams and how to spot them | KinAlert</title>
 <meta name="description" content="The scam texts, calls and WhatsApps going round the UK right now, with red flags, what to do, and a free checker.">
 <link rel="canonical" href="{SITE}/scams/"><meta property="og:title" content="Common UK scams and how to spot them"><meta property="og:description" content="The scam texts, calls and WhatsApps going round the UK right now, with red flags and a free checker."><meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:url" content="{SITE}/scams/"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="/assets/pages.css"></head><body>
 <header class="wrap top"><a class="brand" href="/">{LOGO} KinAlert</a><a href="/#check">Check a message</a></header>
 <main class="wrap"><h1>Scams going round the UK right now</h1>
