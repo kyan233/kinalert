@@ -42,8 +42,11 @@
   form.biz button[disabled]{opacity:.6}
   .bm{font-weight:600;margin:10px 0 0;min-height:1.4em}.bm.ok{color:var(--brand)}.bm.err{color:var(--scam)}
   .hp{position:absolute;left:-9999px}
+  .demo{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:center}
+  .demo video{width:100%;height:auto;border-radius:22px;border:1px solid var(--line);background:#000}
+  .demo .note{font-size:15px;color:var(--ink-2)}
   .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
-  @media (max-width:900px){.hero-b,.who,.contact{grid-template-columns:1fr}ol.steps{grid-template-columns:1fr}}
+  @media (max-width:900px){.hero-b,.who,.contact,.demo{grid-template-columns:1fr}.demo video{max-width:340px;justify-self:center}ol.steps{grid-template-columns:1fr}}
   @media (max-width:560px){form.biz .two{grid-template-columns:1fr;gap:0}}
 </style>
 </head><body>
@@ -62,6 +65,17 @@
       <div data-kinalert-checker data-cta-text="Want this for your whole team?" data-cta-link="Talk to us" data-cta-href="#contact" data-example="From: accounts@acme-supplies-ltd.co (Acme Supplies). Hi, please note our bank details have changed. Pay invoice INV-2231 for £8,450 to the new account today: sort code 20-45-77, account 41239870. Please keep this confidential as we are mid-audit."></div>
     </div>
   </div>
+
+  <section class="b" aria-labelledby="demo-h">
+    <div class="wrap wide demo">
+      <div>
+        <h2 id="demo-h" style="margin-top:0">See it catch one</h2>
+        <p>A real recording from our test inbox. A fake “our bank details have changed” email arrives. Nobody forwards it. About a minute later, whoever approves payments gets a “call them first” alert with what to do.</p>
+        <p class="note">Personal email addresses are hidden in the recording.</p>
+      </div>
+      <video src="/assets/teams-demo.mp4" poster="/assets/teams-demo-poster.jpg" controls muted playsinline preload="none" width="540" height="960" aria-label="Screen recording: a fake bank details email arrives and KinAlert sends a call them first alert"></video>
+    </div>
+  </section>
 
   <section class="b" aria-labelledby="who-h">
     <div class="wrap wide">
